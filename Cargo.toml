@@ -1,0 +1,6 @@
+[package]
+name = "abac"
+version = "0.1.0"
+authors = ["Aleksey Ivanov <ialexxei@gmail.com>"]
+
+[dependencies]

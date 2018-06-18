@@ -1,4 +1,4 @@
-# AuthZ
+# abac
 
 An authorization library implementing ABAC on top of PostgreSQL
 
