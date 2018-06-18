@@ -1,3 +1,7 @@
+#[macro_use]
+extern crate diesel;
+extern crate uuid;
+
 #[cfg(test)]
 mod tests {
     #[test]
