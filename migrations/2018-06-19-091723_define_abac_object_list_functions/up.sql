@@ -43,5 +43,4 @@ begin
         else raise exception 'bad argument' using detail = 'length of _attrs array shoud be less or equal to 3';
     end case;
 end
-$$
-language plpgsql stable;
+$$ language plpgsql stable;
