@@ -59,7 +59,7 @@ returns table (attr abac_attribute) as $$
     select (unnest(_attrs)).*
     union
     select * from target
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_subject_target(_attrs abac_attribute[])
 returns table (attr abac_attribute) as $$
@@ -75,7 +75,7 @@ returns table (attr abac_attribute) as $$
     select (unnest(_attrs)).*
     union
     select * from target
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_action_target(_attrs abac_attribute[])
 returns table (attr abac_attribute) as $$
@@ -91,7 +91,7 @@ returns table (attr abac_attribute) as $$
     select (unnest(_attrs)).*
     union
     select * from target
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_authorize(_subject abac_attribute[], _object abac_attribute[], _action abac_attribute[], _namespace_id uuid[])
 returns boolean as $$
@@ -105,7 +105,7 @@ returns boolean as $$
                 and array[namespace_id] <@ _namespace_id
             limit 1
     );
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_object_preflight_list(_attrs abac_attribute[], _key text)
 returns table (attr abac_attribute) as $$
@@ -123,12 +123,12 @@ returns table (attr abac_attribute) as $$
     select (unnest(_attrs)).*
     union
     select * from target
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_object_preflight_array(_attrs abac_attribute[], _key text)
 returns abac_attribute[] as $$
     select array_agg(t) from abac_object_preflight_list(_attrs, _key) as t;
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_object_list_1(_attr abac_attribute, _offset integer, _limit integer)
 returns table (attr abac_attribute) as $$
@@ -137,7 +137,7 @@ returns table (attr abac_attribute) as $$
         where outbound = _attr
         offset _offset
         limit _limit
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_object_list_2(_attr1 abac_attribute, _attr2 abac_attribute, _offset integer, _limit integer)
 returns table (attr abac_attribute) as $$
@@ -149,7 +149,7 @@ returns table (attr abac_attribute) as $$
             and t2.outbound = _attr2
         offset _offset
         limit _limit
-$$ language sql immutable;
+$$ language sql stable;
 
 create or replace function abac_object_list_3(_attr1 abac_attribute, _attr2 abac_attribute, _attr3 abac_attribute, _offset integer, _limit integer)
 returns table (attr abac_attribute) as $$
@@ -163,4 +163,17 @@ returns table (attr abac_attribute) as $$
             and t3.outbound = _attr3
         offset _offset
         limit _limit
-$$ language sql immutable;
+$$ language sql stable;
+
+create or replace function abac_object_list(_attrs abac_attribute[], _offset integer, _limit integer)
+returns table (attr abac_attribute) as $$
+begin
+    case array_length(_attrs, 1)
+        when 1 then return query select * from  abac_object_list_1(_attrs[1], _offset, _limit);
+        when 2 then return query select * from  abac_object_list_2(_attrs[1], _attrs[2], _offset, _limit);
+        when 3 then return query select * from  abac_object_list_3(_attrs[1], _attrs[2], _attrs[3], _offset, _limit);
+        else raise exception 'bad argument' using detail = 'length of _attrs array shoud be less or equal to 3';
+    end case;
+end
+$$
+language plpgsql stable;
