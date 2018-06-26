@@ -4,3 +4,13 @@ version = "0.1.0"
 authors = ["Aleksey Ivanov <ialexxei@gmail.com>"]
 
 [dependencies]
+diesel = { git = "https://github.com/diesel-rs/diesel", features = ["postgres", "uuid"] }
+uuid = { version = "0.6.5", features = ["v4", "serde"] }
+serde = { version = "1.0.66", optional = true, features = ["derive"] }
+
+[dev-dependencies]
+pretty_assertions = "0.5.1"
+
+[[test]]
+name = "functions"
+path = "tests/functions/lib.rs"
