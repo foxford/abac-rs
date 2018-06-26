@@ -69,3 +69,28 @@ pub mod types {
         }
     }
 }
+
+pub mod dsl {
+    use types::AbacAttributeSqlType;
+    use diesel::expression::{grouped::Grouped, Expression};
+
+    mod predicates {
+        use diesel::pg::Pg;
+        use diesel::sql_types::{Uuid};
+
+        diesel_postfix_operator!(NamespaceId, ".namespace_id", Uuid, backend: Pg);
+    }
+
+    use self::predicates::*;
+
+    pub trait AbacAttributeExpressionMethods: Expression<SqlType = AbacAttributeSqlType> {
+        fn namespace_id(self) -> NamespaceId<Grouped<Self>>
+            where
+                Self: Sized,
+        {
+            NamespaceId::new(Grouped(self))
+        }
+    }
+
+    impl<T: Expression<SqlType = AbacAttributeSqlType>> AbacAttributeExpressionMethods for T {}
+}
