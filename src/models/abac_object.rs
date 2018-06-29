@@ -1,7 +1,7 @@
 use schema::abac_object;
 use types::AbacAttribute;
 
-#[derive(Insertable, Identifiable, Queryable, Debug)]
+#[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[primary_key(inbound, outbound)]
 #[table_name = "abac_object"]

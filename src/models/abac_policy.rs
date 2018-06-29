@@ -3,7 +3,7 @@ use uuid::Uuid;
 use schema::abac_policy;
 use types::AbacAttribute;
 
-#[derive(Insertable, Identifiable, Queryable, Debug)]
+#[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[primary_key(subject, object, action, namespace_id)]
 #[table_name = "abac_policy"]
