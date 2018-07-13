@@ -34,6 +34,7 @@ pub mod types {
     use uuid;
 
     use std::io::Write;
+    use Attribute;
 
     #[derive(SqlType, QueryId)]
     #[postgres(type_name = "abac_attribute")]
@@ -46,6 +47,19 @@ pub mod types {
         pub namespace_id: uuid::Uuid,
         pub key: String,
         pub value: String,
+    }
+
+    impl AbacAttribute {
+        pub fn new<T>(namespace_id: uuid::Uuid, attr: T) -> Self
+        where
+            T: Attribute,
+        {
+            AbacAttribute {
+                namespace_id,
+                key: attr.key(),
+                value: attr.value(),
+            }
+        }
     }
 
     impl ToSql<AbacAttributeSqlType, Pg> for AbacAttribute {
@@ -93,4 +107,9 @@ pub mod dsl {
     }
 
     impl<T: Expression<SqlType = AbacAttributeSqlType>> AbacAttributeExpressionMethods for T {}
+}
+
+pub trait Attribute {
+    fn key(&self) -> String;
+    fn value(&self) -> String;
 }
