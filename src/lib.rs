@@ -90,18 +90,22 @@ pub mod dsl {
 
     mod predicates {
         use diesel::pg::Pg;
-        use diesel::sql_types::Uuid;
+        use diesel::sql_types::{Text, Uuid};
 
+        diesel_postfix_operator!(Key, ".key", Text, backend: Pg);
         diesel_postfix_operator!(NamespaceId, ".namespace_id", Uuid, backend: Pg);
     }
 
     use self::predicates::*;
 
-    pub trait AbacAttributeExpressionMethods: Expression<SqlType = AbacAttributeSqlType> {
-        fn namespace_id(self) -> NamespaceId<Grouped<Self>>
-        where
-            Self: Sized,
-        {
+    pub trait AbacAttributeExpressionMethods:
+        Expression<SqlType = AbacAttributeSqlType> + Sized
+    {
+        fn key(self) -> Key<Grouped<Self>> {
+            Key::new(Grouped(self))
+        }
+
+        fn namespace_id(self) -> NamespaceId<Grouped<Self>> {
             NamespaceId::new(Grouped(self))
         }
     }
