@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Aleksey Ivanov <ialexxei@gmail.com>"]
 
 [dependencies]
-diesel = { git = "https://github.com/diesel-rs/diesel", features = ["postgres", "uuid"] }
+diesel = { git = "https://github.com/diesel-rs/diesel", rev = "aaa1c61", features = ["postgres", "uuid"] }
 uuid = { version = "0.6.5", features = ["v4", "serde"] }
 serde = { version = "1.0.66", optional = true, features = ["derive"] }
 
