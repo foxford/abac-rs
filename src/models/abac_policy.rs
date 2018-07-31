@@ -1,7 +1,7 @@
 use uuid::Uuid;
 
+use attribute::AbacAttribute;
 use schema::abac_policy;
-use types::AbacAttribute;
 
 #[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
