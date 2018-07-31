@@ -2,7 +2,7 @@ use diesel::{self, prelude::*};
 use uuid::Uuid;
 
 use abac::functions::abac_object_list_2;
-use abac::types::AbacAttribute;
+use abac::AbacAttribute;
 
 use shared;
 

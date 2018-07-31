@@ -3,7 +3,7 @@ use uuid::Uuid;
 
 use abac::models::prelude::*;
 use abac::schema::*;
-use abac::types::AbacAttribute;
+use abac::AbacAttribute;
 
 pub fn establish_connection() -> PgConnection {
     let database_url = ::std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
