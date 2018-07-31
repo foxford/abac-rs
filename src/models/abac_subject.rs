@@ -1,5 +1,5 @@
+use attribute::AbacAttribute;
 use schema::abac_subject;
-use types::AbacAttribute;
 
 #[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]

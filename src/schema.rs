@@ -1,39 +1,39 @@
 table! {
-    use types::AbacAttributeSqlType;
+    use sql_types::AbacAttribute;
 
     abac_action (inbound, outbound) {
-        inbound -> AbacAttributeSqlType,
-        outbound -> AbacAttributeSqlType,
+        inbound -> AbacAttribute,
+        outbound -> AbacAttribute,
     }
 }
 
 table! {
-    use types::AbacAttributeSqlType;
+    use sql_types::AbacAttribute;
 
     abac_object (inbound, outbound) {
-        inbound -> AbacAttributeSqlType,
-        outbound -> AbacAttributeSqlType,
+        inbound -> AbacAttribute,
+        outbound -> AbacAttribute,
     }
 }
 
 table! {
     use diesel::sql_types::{Array, Uuid};
-    use types::AbacAttributeSqlType;
+    use sql_types::AbacAttribute;
 
     abac_policy (subject, object, action, namespace_id) {
-        subject -> Array<AbacAttributeSqlType>,
-        object -> Array<AbacAttributeSqlType>,
-        action -> Array<AbacAttributeSqlType>,
+        subject -> Array<AbacAttribute>,
+        object -> Array<AbacAttribute>,
+        action -> Array<AbacAttribute>,
         namespace_id -> Uuid,
     }
 }
 
 table! {
-    use types::AbacAttributeSqlType;
+    use sql_types::AbacAttribute;
 
     abac_subject (inbound, outbound) {
-        inbound -> AbacAttributeSqlType,
-        outbound -> AbacAttributeSqlType,
+        inbound -> AbacAttribute,
+        outbound -> AbacAttribute,
     }
 }
 
