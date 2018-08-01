@@ -21,7 +21,7 @@ table! {
 }
 
 table! {
-    use diesel::sql_types::{Array, Uuid};
+    use diesel::sql_types::*;
     use sql_types::AbacAttribute;
 
     abac_policy (subject, object, action, namespace_id) {
@@ -29,6 +29,7 @@ table! {
         object -> Array<AbacAttribute>,
         action -> Array<AbacAttribute>,
         namespace_id -> Uuid,
+        created_at -> Timestamptz,
     }
 }
 
