@@ -9,7 +9,7 @@ extern crate serde;
 #[macro_use]
 extern crate pretty_assertions;
 
-pub use attribute::AbacAttribute;
+pub use attribute::{AbacAttribute, Attribute};
 
 mod attribute;
 pub mod models;
