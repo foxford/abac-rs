@@ -62,3 +62,8 @@ pub mod dsl {
 
     impl<T: Expression<SqlType = AbacAttribute>> AbacAttributeExpressionMethods for T {}
 }
+
+pub mod prelude {
+    pub use attribute::{AbacAttribute, Attribute};
+    pub use models::prelude::*;
+}
