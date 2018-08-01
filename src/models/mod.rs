@@ -7,7 +7,7 @@ pub mod prelude {
     pub use models::abac_action::AbacAction;
     pub use models::abac_object::AbacObject;
     pub use models::abac_policy::AbacPolicy;
-    pub use models::abac_subject::AbacSubject;
+    pub use models::abac_subject::{AbacSubject, NewAbacSubject};
 }
 
 pub use self::prelude::*;

@@ -12,7 +12,7 @@ pub fn establish_connection() -> PgConnection {
 
 pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
     diesel::insert_into(abac_subject::table)
-        .values(vec![AbacSubject {
+        .values(vec![NewAbacSubject {
             inbound: AbacAttribute {
                 namespace_id: ns_id,
                 key: "uri".to_owned(),
