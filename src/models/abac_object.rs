@@ -1,11 +1,22 @@
+use chrono::{DateTime, Utc};
+
 use attribute::AbacAttribute;
 use schema::abac_object;
 
-#[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
+#[derive(Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[primary_key(inbound, outbound)]
 #[table_name = "abac_object"]
 pub struct AbacObject {
+    pub inbound: AbacAttribute,
+    pub outbound: AbacAttribute,
+    pub created_at: DateTime<Utc>,
+}
+
+#[derive(Insertable, Debug)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[table_name = "abac_object"]
+pub struct NewAbacObject {
     pub inbound: AbacAttribute,
     pub outbound: AbacAttribute,
 }
@@ -32,7 +43,7 @@ mod tests {
             value: "fruit".to_owned(),
         };
 
-        let object = AbacObject {
+        let object = NewAbacObject {
             inbound: inbound.clone(),
             outbound: outbound.clone(),
         };

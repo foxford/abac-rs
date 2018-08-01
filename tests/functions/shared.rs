@@ -29,7 +29,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
 
     diesel::insert_into(abac_object::table)
         .values(vec![
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "type".to_owned(),
@@ -41,7 +41,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "fruit".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "type".to_owned(),
@@ -53,7 +53,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "fruit".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "color".to_owned(),
@@ -65,7 +65,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "light".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "color".to_owned(),
@@ -77,7 +77,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "light".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "color".to_owned(),
@@ -89,7 +89,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "light".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -101,7 +101,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "pear".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -113,7 +113,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "green".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -125,7 +125,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "sweet".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -137,7 +137,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "pear".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -149,7 +149,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "yellow".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -161,7 +161,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "sweet".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -173,7 +173,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "apple".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -185,7 +185,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "green".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -197,7 +197,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "sour".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -209,7 +209,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "apple".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -221,7 +221,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "red".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -233,7 +233,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "sweet".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -245,7 +245,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "apple".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
@@ -257,7 +257,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "red".to_owned(),
                 },
             },
-            AbacObject {
+            NewAbacObject {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "uri".to_owned(),
