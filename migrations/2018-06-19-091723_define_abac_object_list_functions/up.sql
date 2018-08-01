@@ -3,6 +3,7 @@ returns table (attr abac_attribute) as $$
     select inbound
         from abac_object
         where outbound = _attr
+        order by created_at
         offset _offset
         limit _limit
 $$ language sql stable;
@@ -15,6 +16,7 @@ returns table (attr abac_attribute) as $$
         where
             t1.outbound = _attr1
             and t2.outbound = _attr2
+        order by t1.created_at
         offset _offset
         limit _limit
 $$ language sql stable;
@@ -29,6 +31,7 @@ returns table (attr abac_attribute) as $$
             t1.outbound = _attr1
             and t2.outbound = _attr2
             and t3.outbound = _attr3
+        order by t1.created_at
         offset _offset
         limit _limit
 $$ language sql stable;
