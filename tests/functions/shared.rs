@@ -341,7 +341,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
 
     diesel::insert_into(abac_policy::table)
         .values(vec![
-            AbacPolicy {
+            NewAbacPolicy {
                 subject: vec![AbacAttribute {
                     namespace_id: ns_id,
                     key: "role".to_owned(),
@@ -359,7 +359,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                 }],
                 namespace_id: ns_id,
             },
-            AbacPolicy {
+            NewAbacPolicy {
                 subject: vec![AbacAttribute {
                     namespace_id: ns_id,
                     key: "role".to_owned(),
