@@ -12,7 +12,6 @@ drop table if exists abac_subject cascade;
 create table abac_subject (
     inbound abac_attribute,
     outbound abac_attribute,
-    -- type text,
 
     primary key (inbound, outbound)
 );
@@ -21,7 +20,6 @@ drop table if exists abac_object cascade;
 create table abac_object (
     inbound abac_attribute,
     outbound abac_attribute,
-    -- type text,
 
     primary key (inbound, outbound)
 );
@@ -30,7 +28,6 @@ drop table if exists abac_action cascade;
 create table abac_action (
     inbound abac_attribute,
     outbound abac_attribute,
-    -- type text,
 
     primary key (inbound, outbound)
 );
@@ -44,6 +41,20 @@ create table abac_policy (
 
     primary key (subject, object, action, namespace_id)
 );
+
+create or replace function abac_object_target_namespace_list(_value_prefix text, _key text, _namespace_id uuid, _attrs abac_attribute[])
+returns table (namespace_id uuid) as $$
+    select substring(value from '\A' || _value_prefix || '(.*)') ::uuid
+        from abac_object_target(_attrs)
+        where value ~~ (_value_prefix || '%')
+            and key = _key
+            and namespace_id = _namespace_id;
+$$ language sql stable;
+
+create or replace function abac_object_target_namespace_array(_value_prefix text, _key text, _namespace_id uuid, _attrs abac_attribute[])
+returns uuid[] as $$
+    select array_agg(attr) from abac_object_target_namespace_list(_value_prefix, _key, _namespace_id, _attrs) as attr;
+$$ language sql stable;
 
 create or replace function abac_object_target(_attrs abac_attribute[])
 returns table (attr abac_attribute) as $$
