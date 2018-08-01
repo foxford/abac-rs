@@ -275,7 +275,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
 
     diesel::insert_into(abac_action::table)
         .values(vec![
-            AbacAction {
+            NewAbacAction {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "operation".to_owned(),
@@ -287,7 +287,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "any".to_owned(),
                 },
             },
-            AbacAction {
+            NewAbacAction {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "operation".to_owned(),
@@ -299,7 +299,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "any".to_owned(),
                 },
             },
-            AbacAction {
+            NewAbacAction {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "operation".to_owned(),
@@ -311,7 +311,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "any".to_owned(),
                 },
             },
-            AbacAction {
+            NewAbacAction {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "operation".to_owned(),
@@ -323,7 +323,7 @@ pub fn prepare_data(conn: &PgConnection, ns_id: Uuid) {
                     value: "any".to_owned(),
                 },
             },
-            AbacAction {
+            NewAbacAction {
                 inbound: AbacAttribute {
                     namespace_id: ns_id,
                     key: "operation".to_owned(),

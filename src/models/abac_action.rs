@@ -1,11 +1,22 @@
+use chrono::{DateTime, Utc};
+
 use attribute::AbacAttribute;
 use schema::abac_action;
 
-#[derive(Insertable, Identifiable, Queryable, Debug, PartialEq)]
+#[derive(Identifiable, Queryable, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[primary_key(inbound, outbound)]
 #[table_name = "abac_action"]
 pub struct AbacAction {
+    pub inbound: AbacAttribute,
+    pub outbound: AbacAttribute,
+    pub created_at: DateTime<Utc>,
+}
+
+#[derive(Insertable, Debug)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[table_name = "abac_action"]
+pub struct NewAbacAction {
     pub inbound: AbacAttribute,
     pub outbound: AbacAttribute,
 }
@@ -32,7 +43,7 @@ mod tests {
             value: "any".to_owned(),
         };
 
-        let object = AbacAction {
+        let object = NewAbacAction {
             inbound: inbound.clone(),
             outbound: outbound.clone(),
         };

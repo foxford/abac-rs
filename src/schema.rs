@@ -1,9 +1,11 @@
 table! {
+    use diesel::sql_types::*;
     use sql_types::AbacAttribute;
 
     abac_action (inbound, outbound) {
         inbound -> AbacAttribute,
         outbound -> AbacAttribute,
+        created_at -> Timestamptz,
     }
 }
 
