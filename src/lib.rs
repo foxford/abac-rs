@@ -24,9 +24,6 @@ pub mod functions {
     sql_function!(fn abac_subject_target(x: Array<AbacAttribute>) -> AbacAttribute);
     sql_function!(fn abac_object_target(x: Array<AbacAttribute>) -> AbacAttribute);
     sql_function!(fn abac_action_target(x: Array<AbacAttribute>) -> AbacAttribute);
-    sql_function!(fn abac_object_list_1(x: AbacAttribute, offset: Integer, limit: Integer) -> AbacAttribute);
-    sql_function!(fn abac_object_list_2(x: AbacAttribute, y: AbacAttribute, offset: Integer, limit: Integer) -> AbacAttribute);
-    sql_function!(fn abac_object_list_3(x: AbacAttribute, y: AbacAttribute, z: AbacAttribute, offset: Integer, limit: Integer) -> AbacAttribute);
     sql_function!(fn abac_object_list(x: Array<AbacAttribute>, offset: Integer, limit: Integer) -> AbacAttribute);
 }
 

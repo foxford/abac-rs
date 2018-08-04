@@ -25,7 +25,7 @@ fn without_attrs() {
             assert_eq!(info.message(), "bad argument");
             assert_eq!(
                 info.details(),
-                Some("length of _attrs array shoud be less or equal to 3")
+                Some("array length should be less or equal to 3")
             );
         }
         _ => assert!(false),
@@ -183,7 +183,7 @@ fn with_more_attrs() {
             assert_eq!(info.message(), "bad argument");
             assert_eq!(
                 info.details(),
-                Some("length of _attrs array shoud be less or equal to 3")
+                Some("array length should be less or equal to 3")
             );
         }
         _ => assert!(false),
