@@ -17,7 +17,7 @@ pub mod models;
 pub mod schema;
 
 pub mod functions {
-    use diesel::sql_types::{Array, Bool, Integer, Uuid};
+    use diesel::sql_types::{Array, Bool, Integer, Text, Uuid};
     use sql_types::AbacAttribute;
 
     sql_function!(fn abac_authorize(subject: Array<AbacAttribute>, object: Array<AbacAttribute>, action: Array<AbacAttribute>, namespace_id: Array<Uuid>) -> Bool);
@@ -25,6 +25,8 @@ pub mod functions {
     sql_function!(fn abac_object_target(x: Array<AbacAttribute>) -> AbacAttribute);
     sql_function!(fn abac_action_target(x: Array<AbacAttribute>) -> AbacAttribute);
     sql_function!(fn abac_object_list(x: Array<AbacAttribute>, offset: Integer, limit: Integer) -> AbacAttribute);
+    sql_function!(fn abac_object_target_namespace_list(value_prefix: Text, key: Text, ns_id: Uuid, attrs: Array<AbacAttribute>) -> Uuid);
+    sql_function!(fn abac_object_target_namespace_array(value_prefix: Text, key: Text, ns_id: Uuid, attrs: Array<AbacAttribute>) -> Array<Uuid>);
 }
 
 pub mod sql_types {
